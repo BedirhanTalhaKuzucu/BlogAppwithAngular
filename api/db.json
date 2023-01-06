@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "email": "btk.kzc@gmail.com",
+      "userName": "asdf",
+      "password": "12345678",
+      "id": 1
+    }
+  ],
+  "questions": [
+    {
+      "userName": "asdf",
+      "question": "asd",
+      "answers": [
+        {
+          "userName": "asdf",
+          "answer": "deneme",
+          "plus": [],
+          "minus": [
+            1
+          ]
+        }
+      ],
+      "id": 1
+    }
+  ]
+}

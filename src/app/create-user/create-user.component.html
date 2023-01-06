@@ -1,28 +1,42 @@
 <div class="container">
     <div class="form-container">
         <div class="title">Hesap Olustur</div>
-        <form>
+        <form [formGroup]="createUserForm">
             <mat-form-field appearance="outline">
                 <mat-label>Emailinizi Giriniz</mat-label>
-                <input matInput/>
+                <input matInput formControlName="email"/>
+                <mat-error>
+                    <span *ngIf="f['email'].errors && f['email'].errors['required']" >Email Zorunludur</span>
+                    <span *ngIf="f['email'].errors && f['email'].errors['email']" >Email Formatini dogru giriniz</span>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Kullanici Adinizi Giriniz</mat-label>
-                <input matInput/>
+                <input matInput formControlName="userName"/>
+                <mat-error>
+                    <span *ngIf="f['userName'].errors && f['userName'].errors['required']" >Kullanici Adi zorunludur Zorunludur</span>
+                    <span *ngIf="f['userName'].errors && f['userName'].errors['maxlength']" >Maksimum 10 karakter giriniz</span>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Şifrenizi Giriniz</mat-label>
-                <input type="password" matInput/>
+                <input type="password" matInput formControlName="password" />
+                <mat-error>
+                    <span *ngIf="f['password'].errors && f['password'].errors['required']" >Password Zorunludur</span>
+                    <span *ngIf="f['password'].errors && f['password'].errors['minlength']" >Minumun 8 karakter giriniz</span>
+                </mat-error>
             </mat-form-field>
         </form>
         <div class="buttons-container">
-            <button mat-raised-button class="login-button">
+            <button mat-raised-button class="login-button" (click)="createAccount()" [disabled]="createUserForm.invalid" >
                 Kaydol
             </button>
             <p>Veya</p>
             <button mat-button routerLink="/login" >Giris Yap</button>
+            {{ createUserForm.value | json }}
+
         </div>
     </div>
   </div>
